@@ -1,4 +1,7 @@
-# Board LED Test Program
+# NeoPixel Jewel (7 NeoPixel LEDs) Test Program
+
+> Note: Example code uses pin D2 to control the Jewel LEDs. The Jewel 5 V DC pin can be connected to the Gemma M0 Vout pin (or some other 5 volt supply).
+
 
 ## Build
 
@@ -8,8 +11,9 @@ tinygo info gemma-m0
 export GOROOT=...
 
 # Build the UF2 image file.
-tinygo build -target gemma-m0 -o boardleds.uf2 boardleds.go
+tinygo build -target gemma-m0 -o jewel.uf2 jewel.go
 ```
+
 
 ## Deploy
 
@@ -21,5 +25,5 @@ tinygo build -target gemma-m0 -o boardleds.uf2 boardleds.go
 
 3. Drag the UF2 file directly to the mounted drive, boot loader will then restart and run the executable.  
 
-   Red LED should flash, and DotStar LED should cycle through its full range of colors.
+   Red LED should flash, and NeoPixel Jewel 7 LEDs should cycle through their full range of colors.
 
