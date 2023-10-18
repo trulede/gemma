@@ -1,4 +1,4 @@
-# NeoPixel Flora (1 NeoPixel LEDs) Test Program
+# NeoPixel Flora (1 NeoPixel RGB LED) Test Program
 
 Flora LEDs can be daisy chained by connecting the "Out" pad of one Flora to
 the "In" pad of the next Flora. Adjust the code accordingly.

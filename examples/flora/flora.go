@@ -12,7 +12,7 @@ var (
 	flora machine.Pin = machine.D2
 	ws    ws2812.Device
 	leds  = make([]color.RGBA, 1)
-	wheel = &Wheel{}
+	wheel = &Wheel{Brightness: 0x40}
 )
 
 func init() {
@@ -57,6 +57,14 @@ func (w *Wheel) Next() (c color.RGBA) {
 		pos -= 170
 		c = color.RGBA{R: pos * 3, G: 0x0, B: 0xFF - pos*3}
 	}
+	// Apply the alpha adjustment to each color (effective brightness control).
+	setAlpha := func(c, a uint8) uint8 {
+		return uint8(int(c) * int(a) / 255)
+	}
+	c.R = setAlpha(c.R, w.Brightness)
+	c.G = setAlpha(c.G, w.Brightness)
+	c.B = setAlpha(c.B, w.Brightness)
+	// Next pos in the wheel
 	w.pos++
 	return
 }
